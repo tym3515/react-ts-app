@@ -3,6 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  function get(){
+    fetch('/key/')
+    .then(function(response) {
+      return response.text()
+    }).then(function(body) {
+      console.log('body', body);
+      // document.body.innerHTML = body
+    }).catch((err:Error)=>{
+      console.error('err', err);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +23,11 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <div className="btn" onClick={get}>
+          获取
+        </div>
+
       </header>
     </div>
   );
